@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0" minWidth="0" prefHeight="125.0" prefWidth="300.0" style="-fx-background-color: whitesmoke;" stylesheets="@css/modena-nolinkborder.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="author_tool.ATController">
+   <children>
+      <VBox alignment="TOP_CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label text="ECHO Content Author Tool">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="65.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/echologo100.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="5.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="Created by">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Label>
+                  <Hyperlink fx:id="aboutLink" alignment="CENTER_RIGHT" contentDisplay="RIGHT" onAction="#linkClick" text="Shaun Fyffe" textAlignment="RIGHT" textFill="BLUE">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+            <Label text="Copyright © 2016">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

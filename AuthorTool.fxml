@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0" minWidth="0" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="author_tool.ATController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="menuNew" mnemonicParsing="false" onAction="#newDocument" text="New Document" />
+              <MenuItem fx:id="menuSave" mnemonicParsing="false" onAction="#saveDoc" text="Save Document" />
+              <MenuItem fx:id="menuExit" mnemonicParsing="false" onAction="#exitAT" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem fx:id="menuDelete" mnemonicParsing="false" onAction="#deleteKeyword" text="Delete Selected Keyword" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutAuthorTool" mnemonicParsing="false" onAction="#aboutAT" text="About EC Author Tool" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" spacing="20.0">
+               <children>
+                  <TextField fx:id="articleTitle" onKeyPressed="#updateTitle" promptText="Enter Article Title" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="metaTitle" onKeyPressed="#updateMetaT" promptText="Enter META title (60 char MAX)" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <TextField fx:id="metaDesc" onKeyPressed="#updateMetaD" promptText="Enter META description (160 char MAX)" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <TextArea fx:id="articleArea" wrapText="true" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="createNewBtn" mnemonicParsing="false" onAction="#newDocument" text="Create New Document" AnchorPane.leftAnchor="0.0" />
+                        <Button fx:id="saveBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#saveDoc" text="Save Document" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="artWordCountLabel" text="Article Word Count:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="artWordCountField" alignment="CENTER_RIGHT" editable="false" mouseTransparent="true" prefWidth="100.0" promptText="0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="totWordCountLabel" text="Total Word Count" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="totWordCountField" alignment="CENTER_RIGHT" editable="false" mouseTransparent="true" prefWidth="100.0" promptText="0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="costPerWordLabel" text="Cost Per Word:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="costPerWordField" alignment="CENTER_RIGHT" onKeyPressed="#updatePrice" prefWidth="100.0" text="0.00" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="articleCostLabel" text="Article Cost:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="articleCostField" alignment="CENTER_RIGHT" editable="false" mouseTransparent="true" prefWidth="100.0" promptText="\$0.00" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="sentParaRatioLabel" text="Sentence/Paragraph Ratio:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="sentParaField" alignment="CENTER_RIGHT" editable="false" mouseTransparent="true" prefWidth="100.0" promptText="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="280.0">
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="glIndexLabel" text="Reading Grade Level Score:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="4.0" />
+                        <TextField fx:id="glField" alignment="CENTER_RIGHT" editable="false" mouseTransparent="true" prefWidth="100.0" promptText="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="310.0">
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="updateKeyBtn" mnemonicParsing="false" onAction="#updateKeyData" text="Update Keyword Data" AnchorPane.leftAnchor="0.0" />
+                        <Button fx:id="updateArtBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#updataArticleData" text="Update Article Data" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="319.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <TableView fx:id="keywordTable" HBox.hgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="keywordColumn" editable="false" prefWidth="200.0" text="Keyword">
+                        <cellValueFactory>
+                          <PropertyValueFactory property="keyword" />
+                        </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="countColumn" editable="false" prefWidth="55.0" text="Count">
+                        <cellValueFactory>
+                          <PropertyValueFactory property="count" />
+                        </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="densityColumn" editable="false" prefWidth="74.0" text="Density">
+                        <cellValueFactory>
+                          <PropertyValueFactory property="density" />
+                        </cellValueFactory>
+                      </TableColumn>
+                    </columns>
+                  </TableView>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="325.0">
+               <children>
+                  <TextField fx:id="addKeywordField" onKeyPressed="#addKeyword" promptText="Enter Keyword" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="330.0">
+               <children>
+                  <AnchorPane HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="addKeyBtn" mnemonicParsing="false" onAction="#addKeyword" text="Add Keyword" AnchorPane.leftAnchor="0.0" />
+                        <Button fx:id="deleteKeyBtn" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#deleteKeyword" text="Delete Keyword" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
