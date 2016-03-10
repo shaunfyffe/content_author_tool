@@ -290,7 +290,10 @@ public class ATController {
         pw.println("Reading Grade Level: " + articleData.getReadingGradeLevel());
         pw.println("Article Word Count: " + articleData.getWordCount());
         pw.println("Total Word Count (Includes META and Title): " + articleData.getTotalWordCount());
-        pw.println("Total Cost of Article: $" + articleData.getArticlePrice());
+        BigDecimal aP = new BigDecimal(Double.toString(articleData.getArticlePrice()));
+        aP = aP.setScale(2, RoundingMode.CEILING);
+        NumberFormat moneyValue = NumberFormat.getCurrencyInstance();
+        pw.println("Total Cost of Article: " + moneyValue.format(aP));
         pw.println();
         pw.println("Article Text");
         pw.println();
