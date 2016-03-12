@@ -1,4 +1,4 @@
-# content_author_tool
+# Content Author Tool
 
 Developed in Java 1.8 using the JavaFX library.
 
